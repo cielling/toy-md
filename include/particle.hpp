@@ -1,6 +1,7 @@
 #pragma once
 
 #include<vector>
+#include "params.hpp"
 
 using std::vector;
 
@@ -18,3 +19,7 @@ struct particle_s {
     ParticleType ptype = ParticleType::NONE;
     long id = -1;
 };
+
+void init_particles(vector<particle_s> &particles, const params_s my_params);
+
+void print_particles(const vector<particle_s> &particles);

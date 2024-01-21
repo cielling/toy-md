@@ -13,4 +13,5 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_executable(
     md
     src/main.cpp
+    src/particle.cpp
 )
