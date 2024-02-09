@@ -15,5 +15,7 @@ int main(int argc, char *argv[]) {
 
     print_particles(particles);
 
+    write_particles(particles, "my_particles", 0);
+
     return 0;
 }

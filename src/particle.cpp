@@ -4,6 +4,8 @@
 #include<iostream>
 #include<vector>
 #include<random>
+#include<fstream>
+#include<iomanip>
 
 void init_particles(vector<particle_s> &particles, const params_s my_params) {
     std::random_device r_dev;
@@ -35,4 +37,24 @@ void print_particles(const vector<particle_s> &particles) {
                   << " vy= " << p.vel[1]
                   << " vz= " << p.vel[2] << std::endl;
     }
+}
+
+void write_particles(const vector<particle_s> &particles, const std::string file_base, const int iter) {
+    std::ofstream my_file;
+    std::string file_name = file_base + "-" + std::to_string(iter) + ".csv";
+    my_file.open(file_name, std::ios::out);
+    // write data
+    my_file << std::setw(15) << std::setprecision(8);
+    my_file << "id,x,y,z,vx,vy,vz" << std::endl;
+    for (auto p: particles) {
+        my_file << p.id << ","
+                << p.pos[0] << ","
+                << p.pos[1] << ","
+                << p.pos[2] << ","
+                << p.vel[0] << ","
+                << p.vel[1] << ","
+                << p.vel[2]
+                << std::endl;
+    }
+    my_file.close();
 }

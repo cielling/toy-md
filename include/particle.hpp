@@ -1,6 +1,7 @@
 #pragma once
 
 #include<vector>
+#include<string>
 #include "params.hpp"
 
 using std::vector;
@@ -23,3 +24,5 @@ struct particle_s {
 void init_particles(vector<particle_s> &particles, const params_s my_params);
 
 void print_particles(const vector<particle_s> &particles);
+
+void write_particles(const vector<particle_s> &particles, const std::string filename, const int iter);
