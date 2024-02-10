@@ -29,13 +29,7 @@ void init_particles(vector<particle_s> &particles, const params_s my_params) {
 
 void print_particles(const vector<particle_s> &particles) {
     for (auto p: particles) {
-        std::cout << "Particle " << p.id << ":" << std::endl;
-        std::cout << "x= " << p.pos[0]
-                  << " y= " << p.pos[1]
-                  << " z= " << p.pos[2];
-        std::cout << " vx= " << p.vel[0]
-                  << " vy= " << p.vel[1]
-                  << " vz= " << p.vel[2] << std::endl;
+        p.print();
     }
 }
 
