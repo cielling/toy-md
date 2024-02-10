@@ -14,4 +14,5 @@ add_executable(
     md
     src/main.cpp
     src/particle.cpp
+    src/integrate.cpp
 )

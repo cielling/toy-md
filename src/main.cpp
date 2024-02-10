@@ -4,7 +4,7 @@
 #include<random>
 
 #include "../include/particle.hpp"
-
+#include "../include/integrate.hpp"
 
 int main(int argc, char *argv[]) {
 
@@ -13,9 +13,15 @@ int main(int argc, char *argv[]) {
 
     init_particles(particles, my_params);
 
-    print_particles(particles);
+    //print_particles(particles);
 
+    // Write initial particle positions
     write_particles(particles, "my_particles", 0);
+
+    for (int i = 1; i < my_params.n_iter + 1; ++i) {
+        integrate(particles, my_params);
+        write_particles(particles, "my_particles", i);
+    }
 
     return 0;
 }
