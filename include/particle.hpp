@@ -2,6 +2,7 @@
 
 #include<vector>
 #include<string>
+#include <iostream>
 #include "params.hpp"
 
 using std::vector;
@@ -19,6 +20,22 @@ struct particle_s {
 
     ParticleType ptype = ParticleType::NONE;
     long id = -1;
+
+    void integrate(double dt) {
+        pos[0] += vel[0] * dt + acc[0] * dt * dt;
+        pos[1] += vel[1] * dt + acc[1] * dt * dt;
+        pos[2] += vel[2] * dt + acc[2] * dt * dt;
+    }
+
+    void print() {
+        std::cout << "Particle " << id << ":" << std::endl;
+        std::cout << "x= " << pos[0]
+                  << " y= " << pos[1]
+                  << " z= " << pos[2];
+        std::cout << " vx= " << vel[0]
+                  << " vy= " << vel[1]
+                  << " vz= " << vel[2] << std::endl;
+    }
 };
 
 void init_particles(vector<particle_s> &particles, const params_s my_params);
