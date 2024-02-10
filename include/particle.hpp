@@ -1,7 +1,8 @@
 #pragma once
 
-#include<vector>
-#include<string>
+#include <cmath>
+#include <vector>
+#include <string>
 #include <iostream>
 #include "params.hpp"
 
@@ -21,10 +22,16 @@ struct particle_s {
     ParticleType ptype = ParticleType::NONE;
     long id = -1;
 
-    void integrate(double dt) {
+    void integrate(const double dt) {
         pos[0] += vel[0] * dt + acc[0] * dt * dt;
         pos[1] += vel[1] * dt + acc[1] * dt * dt;
         pos[2] += vel[2] * dt + acc[2] * dt * dt;
+    }
+
+    void integrate_periodic(const double dt, const double box_length) {
+        pos[0] = fmod((pos[0] + vel[0] * dt + acc[0] * dt * dt), box_length);
+        pos[1] = fmod((pos[1] + vel[1] * dt + acc[1] * dt * dt), box_length);
+        pos[2] = fmod((pos[2] + vel[2] * dt + acc[2] * dt * dt), box_length);
     }
 
     void print() {
