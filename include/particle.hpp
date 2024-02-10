@@ -50,3 +50,5 @@ void init_particles(vector<particle_s> &particles, const params_s my_params);
 void print_particles(const vector<particle_s> &particles);
 
 void write_particles(const vector<particle_s> &particles, const std::string filename, const int iter);
+
+void write_particles_ovito(const vector<particle_s> particles, const params_s my_params, const std::string file_base, const int iter);

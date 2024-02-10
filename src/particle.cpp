@@ -1,6 +1,7 @@
 #include "../include/particle.hpp"
 #include "../include/params.hpp"
 #include<stdio.h>
+#include <string>
 #include<iostream>
 #include<vector>
 #include<random>
@@ -48,6 +49,32 @@ void write_particles(const vector<particle_s> &particles, const std::string file
                 << p.vel[0] << ","
                 << p.vel[1] << ","
                 << p.vel[2]
+                << std::endl;
+    }
+    my_file.close();
+}
+
+void write_particles_ovito(const vector<particle_s> particles, const params_s my_params, const std::string file_base, const int iter) {
+    std::ofstream my_file;
+    std::string file_name = file_base + "-" + std::to_string(iter) + ".dump";
+    my_file.open(file_name, std::ios::out);
+    // write data
+    my_file << "ITEM: TIMESTEP" << std::endl;
+    my_file << iter << std::endl;
+    my_file << "ITEM: NUMBER OF ATOMS" << std::endl;
+    my_file << my_params.n_particles << std:: endl;
+    my_file << "ITEM: BOX BOUNDS pp pp pp" << std::endl;
+    my_file << "0 " << my_params.box_length << std::endl;
+    my_file << "0 " << my_params.box_length << std::endl;
+    my_file << "0 " << my_params.box_length << std::endl;
+    my_file << "ITEM: ATOMS id mol type x y z" << std::endl;
+    for (auto p: particles) {
+        my_file << p.id << " "
+                << 0 << " "
+                << static_cast<int>(p.ptype) << " "
+                << p.pos[0] << " "
+                << p.pos[1] << " "
+                << p.pos[2]
                 << std::endl;
     }
     my_file.close();
