@@ -15,7 +15,9 @@ void integrate(vector<particle_s> &particles, const params_s my_params) {
             }
             break;
         case BoundaryType::REFLECTIVE:
-            throw std::invalid_argument("Boundary condition 'REFLECTIVE' is not implemented yet.");
+            for (int i = 0; i < my_params.n_particles; ++i) {
+                particles[i].integrate_reflective(my_params.dt, my_params.box_length);
+            }
             break;
         default:
             throw std::invalid_argument("Boundary condition not recognized.");

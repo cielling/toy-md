@@ -34,6 +34,38 @@ struct particle_s {
         pos[2] = fmod((pos[2] + vel[2] * dt + acc[2] * dt * dt), box_length);
     }
 
+    void integrate_reflective(const double dt, const double box_length) {
+        pos[0] = (pos[0] + vel[0] * dt + acc[0] * dt * dt);
+        pos[1] = (pos[1] + vel[1] * dt + acc[1] * dt * dt);
+        pos[2] = (pos[2] + vel[2] * dt + acc[2] * dt * dt);
+        /* Reflect off lower boundary. */
+        if (pos[0] < 0.0) {
+            pos[0] = -pos[0];
+            vel[0] = fabs(vel[0]);
+        }
+        if (pos[1] < 0.0) {
+            pos[1] = -pos[1];
+            vel[1] = fabs(vel[1]);
+        }
+        if (pos[2] < 0.0) {
+            pos[2] = -pos[2];
+            vel[2] = fabs(vel[2]);
+        }
+        /* Reflect off upper boundary. */
+        if (pos[0] > box_length) {
+            pos[0] = 2 * box_length - pos[0];
+            vel[0] = -fabs(vel[0]);
+        }
+        if (pos[1] > box_length) {
+            pos[1] = 2 * box_length - pos[1];
+            vel[1] = -fabs(vel[1]);
+        }
+        if (pos[2] > box_length) {
+            pos[2] = 2 * box_length - pos[2];
+            vel[2] = -fabs(vel[2]);
+        }
+    }
+
     void print() {
         std::cout << "Particle " << id << ":" << std::endl;
         std::cout << "x= " << pos[0]
