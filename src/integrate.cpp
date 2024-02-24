@@ -2,7 +2,7 @@
 #include <iostream>
 #include <stdexcept>
 
-void integrate(vector<particle_s> &particles, const params_s my_params) {
+void integrate(vector<particle_s> &particles, params_s my_params) {
     switch(my_params.boundary_type) {
         case BoundaryType::NONE:
             for (int i = 0; i < my_params.n_particles; ++i) {

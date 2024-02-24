@@ -11,6 +11,10 @@ int main(int argc, char *argv[]) {
     params_s my_params;
     vector<particle_s> particles;
 
+    my_params.set_params(argc, argv);
+
+    my_params.print();
+
     init_particles(particles, my_params);
 
     //print_particles(particles);

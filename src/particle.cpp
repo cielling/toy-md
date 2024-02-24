@@ -8,7 +8,7 @@
 #include<fstream>
 #include<iomanip>
 
-void init_particles(vector<particle_s> &particles, const params_s my_params) {
+void init_particles(vector<particle_s> &particles, params_s my_params) {
     std::random_device r_dev;
     std::mt19937 rng(r_dev());
     std::uniform_real_distribution<double> rng_dist(0.0, my_params.box_length);
