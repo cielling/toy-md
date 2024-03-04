@@ -24,6 +24,7 @@ void init_particles(vector<particle_s> &particles, params_s my_params) {
         p.vel[0] = rng_dist(rng);
         p.vel[1] = rng_dist(rng);
         p.vel[2] = rng_dist(rng);
+        p.mass = 1.0;
         particles.push_back(p);
     }
 }
@@ -43,6 +44,7 @@ void write_particles(const vector<particle_s> &particles, const std::string file
     my_file << "id,x,y,z,vx,vy,vz" << std::endl;
     for (auto p: particles) {
         my_file << p.id << ","
+                << p.mass << ","
                 << p.pos[0] << ","
                 << p.pos[1] << ","
                 << p.pos[2] << ","
