@@ -8,7 +8,9 @@
 #include<fstream>
 #include<iomanip>
 
-void init_particles(vector<particle_s> &particles, params_s my_params) {
+extern params_s my_params;
+
+void init_particles(vector<particle_s> &particles) {
     std::random_device r_dev;
     std::mt19937 rng(r_dev());
     std::uniform_real_distribution<double> rng_dist(0.0, my_params.box_length);
@@ -56,7 +58,7 @@ void write_particles(const vector<particle_s> &particles, const std::string file
     my_file.close();
 }
 
-void write_particles_ovito(const vector<particle_s> particles, const params_s my_params, const std::string file_base, const int iter) {
+void write_particles_ovito(const vector<particle_s> particles, const std::string file_base, const int iter) {
     std::ofstream my_file;
     std::string file_name = file_base + "-" + std::to_string(iter) + ".dump";
     my_file.open(file_name, std::ios::out);

@@ -1,8 +1,9 @@
 #include "../include/integrate.hpp"
 #include <iostream>
 #include <stdexcept>
+extern params_s my_params;
 
-void integrate(vector<particle_s> &particles, params_s my_params) {
+void integrate(vector<particle_s> &particles) {
     switch(my_params.boundary_type) {
         case BoundaryType::NONE:
             for (int i = 0; i < my_params.n_particles; ++i) {
