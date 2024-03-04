@@ -5,6 +5,7 @@
 
 #include "../include/particle.hpp"
 #include "../include/integrate.hpp"
+#include "../include/interaction.hpp"
 
 params_s my_params;
 
@@ -16,7 +17,9 @@ int main(int argc, char *argv[]) {
 
     my_params.print();
 
-    init_particles(particles, my_params);
+    init_particles(particles);
+
+    LJpotential_s LennardJones;
 
     //print_particles(particles);
 
@@ -25,6 +28,7 @@ int main(int argc, char *argv[]) {
 
     for (int i = 1; i < my_params.n_iter + 1; ++i) {
         integrate(particles);
+        update_acc(particles, LennardJones);
         write_particles_ovito(particles, "my_particles", i);
     }
 
