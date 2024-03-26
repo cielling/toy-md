@@ -25,9 +25,10 @@ void init_random_particles(vector<particle_s> &particles) {
         p.pos[0] = rng_dist(rng);
         p.pos[1] = rng_dist(rng);
         p.pos[2] = rng_dist(rng);
-        p.vel[0] = rng_dist(rng);
-        p.vel[1] = rng_dist(rng);
-        p.vel[2] = rng_dist(rng);
+        // Want initial velocity distribution centered around zero. And normalize to 1 while I'm at it.
+        p.vel[0] = (rng_dist(rng) - my_params.box_length * 0.5) / my_params.box_length * 2.0;
+        p.vel[1] = (rng_dist(rng) - my_params.box_length * 0.5) / my_params.box_length * 2.0;
+        p.vel[2] = (rng_dist(rng) - my_params.box_length * 0.5) / my_params.box_length * 2.0;
         p.mass = 1.0;
         particles.push_back(p);
     }
