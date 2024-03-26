@@ -8,11 +8,17 @@
 
 using std::vector;
 
-enum class ParticleType {
+enum class ParticleType : int {
     NONE,
     OTHER // TODO: update later with real types
 };
 
+static const std::map<ParticleType, std::string> map_particle_type = {
+    {ParticleType::NONE, "None"},
+    {ParticleType::OTHER, "Other"}
+};
+
+static std::map<std::string, ParticleType> rmap_particle_type = reverse_map(map_particle_type);
 
 struct particle_s {
     vector<double> pos{0, 0, 0};
@@ -78,7 +84,9 @@ struct particle_s {
     }
 };
 
-void init_particles(vector<particle_s> &particles);
+void init_random_particles(vector<particle_s> &particles);
+
+int load_particles(vector<particle_s> & particles, std::string const & filename);
 
 void print_particles(const vector<particle_s> &particles);
 
