@@ -45,7 +45,7 @@ void update_acc(vector<particle_s> &particles, potential_s &potential) {
     }
 
     for (int i = 0; i < particles.size(); ++i) {
-        particle_s p = particles[i];
+        particle_s & p = particles[i];
         p.acc[0] = force[i][0] / p.mass;
         p.acc[1] = force[i][1] / p.mass;
         p.acc[2] = force[i][2] / p.mass;
