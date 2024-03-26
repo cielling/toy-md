@@ -53,7 +53,7 @@ struct params_s {
     double box_length = 100;
     double dt = 0.1;
     BoundaryType boundary_type = BoundaryType::PERIODIC;
-    std::string last_restart_file = "..\\test\\snake_eyes.csv";
+    std::string last_restart_file;// = "..\\test\\snake_eyes.csv";
 
     void set_params(int argc, char *argv[]) {
 
@@ -65,7 +65,7 @@ struct params_s {
         ("i,iteration", "Number of iterations", cxxopts::value<int>()->default_value("50"))
         ("t,timestep", "Size of time step", cxxopts::value<double>()->default_value("0.1"))
         ("b,boundary", "boundary type: N(ONE), P(ERIODIC), R(EFLECTIVE)", cxxopts::value<char>()->default_value("P"))
-        ("f,file", "Dump file to (re-)start from", cxxopts::value<std::string>()->default_value("..\\test\\snake_eyes.csv"));
+        ("f,file", "Dump file to (re-)start from", cxxopts::value<std::string>()->default_value(""));
 
         options.parse_positional({"input_files"});
         cxxopts::ParseResult result;
