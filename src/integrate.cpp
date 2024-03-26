@@ -38,9 +38,9 @@ void update_acc(vector<particle_s> &particles, potential_s &potential) {
             force[i][0] += f_ij[0];
             force[i][1] += f_ij[1];
             force[i][2] += f_ij[2];
-            force[j][0] += f_ij[0];
-            force[j][1] += f_ij[1];
-            force[j][2] += f_ij[2];
+            force[j][0] -= f_ij[0];
+            force[j][1] -= f_ij[1];
+            force[j][2] -= f_ij[2];
         }
     }
 
