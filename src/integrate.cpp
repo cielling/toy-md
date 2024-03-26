@@ -32,8 +32,8 @@ void integrate(vector<particle_s> &particles) {
 void update_acc(vector<particle_s> &particles, potential_s &potential) {
     vector<vector<double>> force(my_params.n_particles, vector<double>(3));
 
-    for (int i = 0; i < my_params.n_particles; ++i) {
-        for (int j = 0; j < my_params.n_particles; ++j) {
+    for (int i = 0; i < my_params.n_particles - 1; ++i) {
+        for (int j = i + 1; j < my_params.n_particles; ++j) {
             vector<double> f_ij = potential.force(particles[i].pos, particles[j].pos);
             force[i][0] += f_ij[0];
             force[i][1] += f_ij[1];
