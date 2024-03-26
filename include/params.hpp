@@ -74,7 +74,7 @@ struct params_s {
 
         if (result.count("number")) n_particles = result["number"].as<int>();
 
-        if (result.count("length")) box_length = result["length"].as<float>();
+        if (result.count("length")) box_length = result["length"].as<double>();
 
         if (result.count("iteration")) n_iter = result["iteration"].as<int>();
         
