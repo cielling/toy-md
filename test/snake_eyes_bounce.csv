@@ -1,0 +1,9 @@
+file_version,0.01
+n_particles,2
+box_length,100
+last_iter,0
+last_dt,0.04
+boundary_type,Periodic
+id,type,mol_id,x,y,z,vx,vy,vz,ax,ay,az,mass
+0,1,0,45,50,50,2.5,0,0,0,0,0,1
+1,0,0,55,50,50,-2.5,0,0,0,0,0,1
