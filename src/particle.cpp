@@ -29,7 +29,8 @@ void init_random_particles(vector<particle_s> &particles) {
         p.vel[0] = (rng_dist(rng) - my_params.box_length * 0.5) / my_params.box_length * 2.0;
         p.vel[1] = (rng_dist(rng) - my_params.box_length * 0.5) / my_params.box_length * 2.0;
         p.vel[2] = (rng_dist(rng) - my_params.box_length * 0.5) / my_params.box_length * 2.0;
-        p.mass = 1.0;
+        p.mass = static_cast<double>(i % 3 + 1);
+        p.ptype = static_cast<ParticleType>(i % 3);
         particles.push_back(p);
     }
 }

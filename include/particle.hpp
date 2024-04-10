@@ -9,11 +9,28 @@
 using std::vector;
 
 enum class ParticleType : int {
+    HYDROGEN,
+    HELIUM,
+    LITHIUM,
+    BERYLLIUM,
+    BORON,
+    CARBON,
+    NITROGEN,
+    OXYGEN,
+    FLOURINE,
     NONE,
     OTHER // TODO: update later with real types
 };
 
 static const std::map<ParticleType, std::string> map_particle_type = {
+    {ParticleType::HYDROGEN, "H"},
+    {ParticleType::HELIUM, "He"},
+    {ParticleType::LITHIUM, "Li"},
+    {ParticleType::BERYLLIUM, "Be"},
+    {ParticleType::BORON, "B"},
+    {ParticleType::CARBON, "C"},
+    {ParticleType::NITROGEN, "N"},
+    {ParticleType::FLOURINE, "F"},
     {ParticleType::NONE, "None"},
     {ParticleType::OTHER, "Other"}
 };
