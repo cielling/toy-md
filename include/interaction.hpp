@@ -10,10 +10,11 @@ struct potential_s {
 };
 
 struct LJpotential_s : potential_s {
-    double eps = 1.0;
-    double sigma = 1.0;
+    double eps = 30682.0;
+    double sigma = 2.928;
     double sigma6 = sigma * sigma * sigma * sigma * sigma * sigma;
     double sigma12 = sigma6 * sigma6;
+    double r_min = std::pow(2.0, 1./6.) * sigma;
 
     double potential(const vector<double> &pos1, const vector<double> &pos2) {
         vector<double> r = {0.0, 0.0, 0.0};
@@ -41,6 +42,7 @@ struct LJpotential_s : potential_s {
             force * r[1],
             force * r[2]
         };
+        force_vec.push_back(force);
         return force_vec;
     }
 };

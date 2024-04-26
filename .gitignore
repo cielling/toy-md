@@ -2,3 +2,7 @@ launch.json
 settings.json
 bld
 bld/*
+build
+build/*
+output/*
+bin

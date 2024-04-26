@@ -10,9 +10,15 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_executable(
-    md
-    src/main.cpp
-    src/particle.cpp
-    src/integrate.cpp
-)
+set(gtest_force_shared_crt on)
+
+add_subdirectory(extern/googletest)
+
+enable_testing()
+
+# include_directories(extern/googletest/googletest/include)
+
+# find_package(GoogleTest)
+
+add_subdirectory(src)
+add_subdirectory(test)
