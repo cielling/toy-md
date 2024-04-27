@@ -53,7 +53,7 @@ TEST(Lennard_Jones, force_r_1) {
     vector<double> p1 = {0.0, 1.0, 1.0};
     vector<double> p2 = {0.0, 2.0, 1.0};
     double force_mag = 24.0 * lj.eps * (2.0 * lj.sigma12 / std::pow(1.0, 14.0) - lj.sigma6 / std::pow(1.0, 8.0));
-    vector<double> force_actual = {0.0, force_mag, 0.0, force_mag};
+    vector<double> force_actual = {0.0, -force_mag, 0.0, force_mag};
     vector<double> force = lj.force(p1, p2);
     EXPECT_FLOAT_EQ(force_actual[0], force[0]);
     EXPECT_FLOAT_EQ(force_actual[1], force[1]);
@@ -64,9 +64,9 @@ TEST(Lennard_Jones, force_r_1) {
 TEST(Lennard_Jones, force_r_4) {
     LJpotential_s lj;
     vector<double> p1 = {0.0, 1.0, 0.0};
-    vector<double> p2 = {2.0, 1.0, 0.0};
+    vector<double> p2 = {4.0, 1.0, 0.0};
     double force_mag = 24.0 * lj.eps * (2.0 * lj.sigma12 / std::pow(4.0, 14.0) - lj.sigma6 / std::pow(4.0, 8.0));
-    vector<double> force_actual = {force_mag, 0.0, 0.0, force_mag};
+    vector<double> force_actual = {-force_mag, 0.0, 0.0, force_mag};
     vector<double> force = lj.force(p1, p2);
     EXPECT_FLOAT_EQ(force_actual[0], force[0]);
     EXPECT_FLOAT_EQ(force_actual[1], force[1]);
