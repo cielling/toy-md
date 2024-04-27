@@ -34,13 +34,14 @@ struct LJpotential_s : potential_s {
         r[1] = pos1[1] - pos2[1];
         r[2] = pos1[2] - pos2[2];
         double r2 = r[0] * r[0] + r[1] * r[1] + r[2] * r[2];
-        double r8 = sigma6 / (r2 * r2 * r2);
-        double r14 = r8 * r8;
-        double force = 24.0 * eps * (2.0 * r14 - r8);
+        double r_mag = std::sqrt(r2);
+        double r8 = sigma6 / (r2 * r2 * r2 * r2);
+        double r14 = 2.0 * sigma12 / (r2 * r2 * r2 * r2 * r2 * r2 * r2);
+        double force = 24.0 * eps * (r14 - r8);
         vector<double> force_vec = {
-            force * r[0],
-            force * r[1],
-            force * r[2]
+            force * r[0] / r_mag,
+            force * r[1] / r_mag,
+            force * r[2] / r_mag
         };
         force_vec.push_back(force);
         return force_vec;
